@@ -1,0 +1,21 @@
+# Quartus temporary files
+db/
+incremental_db/
+simulation/
+greybox_tmp/
+hc_output/
+/output_files/
+
+# Log files
+*.log
+*.rpt
+*.summary
+*.done
+*.pin
+*.jdi
+*.sld
+
+# Compilation databases
+*.vdb
+*.db
+*.ipinfo
