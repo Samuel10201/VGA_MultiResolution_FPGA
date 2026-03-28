@@ -52,6 +52,8 @@ begin
 		if (ps2_clock' event and ps2_clock = '0') then
 			code(i)<=ps2_data;
 			i<=i+1;
+			scan_ready <= '0';
+			
 			if(i=10) then
 				tecla<=code;
 				
