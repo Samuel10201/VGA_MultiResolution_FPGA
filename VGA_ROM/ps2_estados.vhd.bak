@@ -10,9 +10,7 @@ port(
 	key1a : out std_logic_vector(6 downto 0);
 	key1b : out std_logic_vector(6 downto 0);	
 	key2a : out std_logic_vector(6 downto 0);
-	key2b : out std_logic_vector(6 downto 0);
-	scan_code_out : out std_logic_vector(7 downto 0);
-	scan_ready    : out std_logic	
+	key2b : out std_logic_vector(6 downto 0)	
 );
 end ps2_estados;
 -----------------------------------------------------
@@ -54,10 +52,6 @@ begin
 			i<=i+1;
 			if(i=10) then
 				tecla<=code;
-				
-				scan_code_out <= code(8 downto 1); 
-				scan_ready    <= '1';
-				
 				i<=0;
 				estado_actual <= estado_siguiente;
 			end if;

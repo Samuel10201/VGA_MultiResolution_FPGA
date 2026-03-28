@@ -1,0 +1,74 @@
+--------------------------------------------------------------------------------
+-- FileName:        system_control.vhd
+-- Description:     Master state machine to control system mode based on PS/2.
+--                  Detects key release (F0) for 'P' (4D) and 'B' (32).
+--------------------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY system_control IS
+    PORT(
+        clk          : IN  STD_LOGIC;                      -- 50 MHz system clock
+        reset_n      : IN  STD_LOGIC;                      -- Active low reset (KEY0)
+        ps2_code     : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);   -- Data from PS/2 keyboard
+        ps2_new_data : IN  STD_LOGIC;                      -- Pulse when new PS/2 byte arrives
+        show_picture : OUT STD_LOGIC;                      -- '1' = Picture, '0' = Black
+        lcd_mode     : OUT STD_LOGIC                       -- '1' = Picture String, '0' = Black String
+    );
+END system_control;
+
+ARCHITECTURE behavior OF system_control IS
+
+    -- State machine definitions for Keyboard tracking
+    TYPE state_type IS (WAIT_FOR_BREAK, WAIT_FOR_KEY);
+    SIGNAL current_state : state_type := WAIT_FOR_BREAK;
+    
+    -- Internal registers to hold the current system mode
+    SIGNAL mode_reg : STD_LOGIC := '1'; -- Default to Picture Mode
+
+BEGIN
+
+    -- Assign internal registers to output pins
+    show_picture <= mode_reg;
+    lcd_mode     <= mode_reg;
+
+    PROCESS(clk, reset_n)
+    BEGIN
+        IF (reset_n = '0') THEN
+            -- Reset system to default state
+            current_state <= WAIT_FOR_BREAK;
+            mode_reg      <= '1'; 
+            
+        ELSIF rising_edge(clk) THEN
+            -- Only process when a new byte is received from the keyboard
+            IF (ps2_new_data = '1') THEN
+                CASE current_state IS
+                
+                    WHEN WAIT_FOR_BREAK =>
+                        -- Check for the PS/2 Break Code (F0 hex)
+                        IF (ps2_code = x"F0") THEN
+                            current_state <= WAIT_FOR_KEY;
+                        END IF;
+                        
+                    WHEN WAIT_FOR_KEY =>
+                        -- Check which key was released
+                        IF (ps2_code = x"4D") THEN
+                            -- 'P' key released -> Picture Mode
+                            mode_reg <= '1';
+                        ELSIF (ps2_code = x"32") THEN
+                            -- 'B' key released -> Black Screen Mode
+                            mode_reg <= '0';
+                        END IF;
+                        
+                        -- Return to waiting for the next key release
+                        current_state <= WAIT_FOR_BREAK;
+                        
+                    WHEN OTHERS =>
+                        current_state <= WAIT_FOR_BREAK;
+                END CASE;
+            END IF;
+        END IF;
+    END PROCESS;
+
+END behavior;

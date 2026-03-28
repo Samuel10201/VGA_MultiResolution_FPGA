@@ -4,7 +4,7 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 2017  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -20,34 +20,34 @@ refer to the applicable agreement for further details.
 */
 (header "symbol" (version "1.2"))
 (symbol
-	(rect 0 0 216 128)
-	(text "EZ_ROM" (rect 82 0 144 16)(font "Arial" (font_size 10)))
-	(text "inst" (rect 8 112 25 124)(font "Arial" ))
+	(rect 0 0 216 136)
+	(text "EZ_ROM" (rect 65 0 127 16)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 120 25 132)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
-		(text "address[13..0]" (rect 0 0 82 14)(font "Arial" (font_size 8)))
-		(text "address[13..0]" (rect 4 18 72 31)(font "Arial" (font_size 8)))
+		(text "address[19..0]" (rect 0 0 82 14)(font "Arial" (font_size 8)))
+		(text "address[19..0]" (rect 4 14 102 31)(font "Arial" (font_size 8)))
 		(line (pt 0 32)(pt 88 32)(line_width 3))
 	)
 	(port
 		(pt 0 112)
 		(input)
 		(text "clock" (rect 0 0 29 14)(font "Arial" (font_size 8)))
-		(text "clock" (rect 4 98 27 111)(font "Arial" (font_size 8)))
+		(text "clock" (rect 4 94 39 111)(font "Arial" (font_size 8)))
 		(line (pt 0 112)(pt 144 112))
 	)
 	(port
 		(pt 216 32)
 		(output)
-		(text "q[23..0]" (rect 0 0 42 14)(font "Arial" (font_size 8)))
-		(text "q[23..0]" (rect 177 18 211 31)(font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 0 0 35 14)(font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 170 14 211 31)(font "Arial" (font_size 8)))
 		(line (pt 216 32)(pt 160 32)(line_width 3))
 	)
 	(drawing
-		(text "24 bits" (rect 109 24 194 159)(font "Arial" )(vertical))
-		(text "16384 words" (rect 120 13 217 183)(font "Arial" )(vertical))
-		(text "Block type: AUTO" (rect 48 114 170 239)(font "Arial" ))
+		(text "4 bits" (rect 105 32 197 169)(font "Arial" )(vertical))
+		(text "1048576 words" (rect 120 16 243 231)(font "Arial" )(vertical))
+		(text "Block type: AUTO" (rect 48 122 204 259)(font "Arial" ))
 		(line (pt 104 24)(pt 136 24))
 		(line (pt 136 24)(pt 136 96))
 		(line (pt 136 96)(pt 104 96))
@@ -72,10 +72,10 @@ refer to the applicable agreement for further details.
 		(line (pt 96 32)(pt 104 32)(line_width 3))
 		(line (pt 80 112)(pt 80 36))
 		(line (pt 144 112)(pt 144 36))
-		(line (pt 0 0)(pt 217 0))
-		(line (pt 217 0)(pt 217 130))
-		(line (pt 0 130)(pt 217 130))
-		(line (pt 0 0)(pt 0 130))
+		(line (pt 0 0)(pt 218 0))
+		(line (pt 218 0)(pt 218 142))
+		(line (pt 0 142)(pt 218 142))
+		(line (pt 0 0)(pt 0 142))
 		(line (pt 0 0)(pt 0 0))
 		(line (pt 0 0)(pt 0 0))
 		(line (pt 0 0)(pt 0 0))

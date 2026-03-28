@@ -4,7 +4,7 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 2017  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -20,9 +20,9 @@ refer to the applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 208 128)
+	(rect 16 16 216 192)
 	(text "hw_image_generator" (rect 5 0 88 12)(font "Arial" ))
-	(text "inst" (rect 8 96 20 108)(font "Arial" ))
+	(text "inst" (rect 8 160 20 172)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -47,43 +47,53 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 0 80)
 		(input)
-		(text "pixel_clk" (rect 0 0 33 12)(font "Arial" ))
-		(text "pixel_clk" (rect 21 75 54 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80)(line_width 1))
+		(text "h_pixels[31..0]" (rect 0 0 55 12)(font "Arial" ))
+		(text "h_pixels[31..0]" (rect 21 75 76 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
 	)
 	(port
-		(pt 192 32)
+		(pt 0 96)
+		(input)
+		(text "v_pixels[31..0]" (rect 0 0 56 12)(font "Arial" ))
+		(text "v_pixels[31..0]" (rect 21 91 77 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "pixel_clk" (rect 0 0 33 12)(font "Arial" ))
+		(text "pixel_clk" (rect 21 107 54 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 1))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "show_picture" (rect 0 0 51 12)(font "Arial" ))
+		(text "show_picture" (rect 21 123 72 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 1))
+	)
+	(port
+		(pt 200 32)
 		(output)
 		(text "red[7..0]" (rect 0 0 33 12)(font "Arial" ))
-		(text "red[7..0]" (rect 138 27 171 39)(font "Arial" ))
-		(line (pt 192 32)(pt 176 32)(line_width 3))
+		(text "red[7..0]" (rect 146 27 179 39)(font "Arial" ))
+		(line (pt 200 32)(pt 184 32)(line_width 3))
 	)
 	(port
-		(pt 192 48)
+		(pt 200 48)
 		(output)
 		(text "green[7..0]" (rect 0 0 42 12)(font "Arial" ))
-		(text "green[7..0]" (rect 129 43 171 55)(font "Arial" ))
-		(line (pt 192 48)(pt 176 48)(line_width 3))
+		(text "green[7..0]" (rect 137 43 179 55)(font "Arial" ))
+		(line (pt 200 48)(pt 184 48)(line_width 3))
 	)
 	(port
-		(pt 192 64)
+		(pt 200 64)
 		(output)
 		(text "blue[7..0]" (rect 0 0 35 12)(font "Arial" ))
-		(text "blue[7..0]" (rect 136 59 171 71)(font "Arial" ))
-		(line (pt 192 64)(pt 176 64)(line_width 3))
+		(text "blue[7..0]" (rect 144 59 179 71)(font "Arial" ))
+		(line (pt 200 64)(pt 184 64)(line_width 3))
 	)
-	(parameter
-		"pixels_y"
-		"478"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"pixels_x"
-		"600"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 176 96)(line_width 1))
+		(rectangle (rect 16 16 184 160)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 208 -64 308 16))
 )
