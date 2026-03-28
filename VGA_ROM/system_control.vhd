@@ -30,7 +30,6 @@ ARCHITECTURE behavior OF system_control IS
 
 BEGIN
 
-    -- Drive outputs directly from the internal register
     show_picture <= mode_reg;
     lcd_mode     <= mode_reg;
 

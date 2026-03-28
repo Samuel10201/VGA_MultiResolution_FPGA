@@ -44,11 +44,6 @@ BEGIN
     BEGIN
         IF (disp_ena = '1' AND show_picture = '1') THEN
             
-            -- =========================================================
-            -- CONCEPTO APLICADO: Spatial Downsampling (Submuestreo)
-            -- Aquí se evidencia el ajuste de la resolución de pantalla
-            -- a la matriz fija de la ROM (1024x768).
-            -- =========================================================
             
             -- Horizontal Mapping
             IF (h_pixels = 640) THEN
@@ -72,7 +67,7 @@ BEGIN
             rom_index := (mapped_row * 1024) + mapped_col;
             direccion <= std_logic_vector(to_unsigned(rom_index, 20));
 
-            -- Grayscale Expansion: 4-bit to 8-bit DAC mapping
+
             red   <= dato & "0000";
             green <= dato & "0000";
             blue  <= dato & "0000";

@@ -1422,10 +1422,6 @@ refer to the applicable agreement for further details.
 	(pt -352 160)
 )
 (connector
-	(pt -352 360)
-	(pt -256 360)
-)
-(connector
 	(pt -464 352)
 	(pt -464 376)
 )
@@ -1983,6 +1979,10 @@ refer to the applicable agreement for further details.
 (connector
 	(pt -1272 160)
 	(pt -1216 160)
+)
+(connector
+	(pt -352 360)
+	(pt -256 360)
 )
 (junction (pt -1032 160))
 (junction (pt -1080 160))

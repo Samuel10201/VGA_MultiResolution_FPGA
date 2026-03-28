@@ -65,23 +65,23 @@ BEGIN
 	BEGIN
 	
 		IF(reset_n = '0') THEN		--reset asserted
-			h_count := 0;				--reset horizontal counter
-			v_count := 0;				--reset vertical counter
-			h_sync <= NOT h_pol;		--deassert horizontal sync
-			v_sync <= NOT v_pol;		--deassert vertical sync
-			disp_ena <= '0';			--disable display
-			column <= 0;				--reset column pixel coordinate
-			row <= 0;					--reset row pixel coordinate
+			h_count := 0;				
+			v_count := 0;				
+			h_sync <= NOT h_pol;		
+			v_sync <= NOT v_pol;		
+			disp_ena <= '0';			
+			column <= 0;				
+			row <= 0;					
 			
 		ELSIF(pixel_clk'EVENT AND pixel_clk = '1') THEN
 			h_period := h_pulse + h_bp + h_pixels + h_fp;
 			v_period := v_pulse + v_bp + v_pixels + v_fp;
-			--counters
-			IF(h_count < h_period - 1) THEN		--horizontal counter (pixels)
+
+			IF(h_count < h_period - 1) THEN		
 				h_count := h_count + 1;
 			ELSE
 				h_count := 0;
-				IF(v_count < v_period - 1) THEN	--veritcal counter (rows)
+				IF(v_count < v_period - 1) THEN	
 					v_count := v_count + 1;
 				ELSE
 					v_count := 0;
@@ -90,31 +90,31 @@ BEGIN
 
 			--horizontal sync signal
 			IF(h_count < h_pixels + h_fp OR h_count >= h_pixels + h_fp + h_pulse) THEN
-				h_sync <= NOT h_pol;		--deassert horiztonal sync pulse
+				h_sync <= NOT h_pol;		
 			ELSE
-				h_sync <= h_pol;			--assert horiztonal sync pulse
+				h_sync <= h_pol;			
 			END IF;
 			
 			--vertical sync signal
 			IF(v_count < v_pixels + v_fp OR v_count >= v_pixels + v_fp + v_pulse) THEN
-				v_sync <= NOT v_pol;		--deassert vertical sync pulse
+				v_sync <= NOT v_pol;		
 			ELSE
-				v_sync <= v_pol;			--assert vertical sync pulse
+				v_sync <= v_pol;			
 			END IF;
 			
 			--set pixel coordinates
-			IF(h_count < h_pixels) THEN  	--horiztonal display time
-				column <= h_count;			--set horiztonal pixel coordinate
+			IF(h_count < h_pixels) THEN  	
+				column <= h_count;			
 			END IF;
-			IF(v_count < v_pixels) THEN	--vertical display time
-				row <= v_count;				--set vertical pixel coordinate
+			IF(v_count < v_pixels) THEN	
+				row <= v_count;				
 			END IF;
 
 			--set display enable output
-			IF(h_count < h_pixels AND v_count < v_pixels) THEN  	--display time
-				disp_ena <= '1';											 	--enable display
-			ELSE																	--blanking time
-				disp_ena <= '0';												--disable display
+			IF(h_count < h_pixels AND v_count < v_pixels) THEN  	
+				disp_ena <= '1';											 	
+			ELSE																	
+				disp_ena <= '0';												
 			END IF;
 
 		END IF;

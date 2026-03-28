@@ -84,9 +84,7 @@ BEGIN
                         lcd_en <= '0';
                     END IF;
                     
-                    -- ==========================================
-                    -- ESTRUCTURA PROTEGIDA CON ELSE
-                    -- ==========================================
+     
                     IF (delay_cnt = 100_000) THEN 
                         delay_cnt <= 0;
                         state     <= CLEAR_DISPLAY;
@@ -140,7 +138,7 @@ BEGIN
                     END IF;
 
                 WHEN IDLE =>
-                    delay_cnt <= 0; -- Mantener el contador en cero
+                    delay_cnt <= 0; 
                     
                     IF (lcd_mode /= prev_mode) THEN
                         state <= CLEAR_DISPLAY; 

@@ -10,17 +10,17 @@ entity resolution_selector is
 		  sw1 : in  std_logic;
 		  sw2 : in  std_logic;
         clk_select    : out std_logic_vector(1 downto 0);
-        -- Horizontal Timing Parameters
+		  
         h_pixels      : out integer;
         h_pulse       : out integer;
         h_bp          : out integer;
         h_fp          : out integer;
-        -- Vertical Timing Parameters
+		  
         v_pixels      : out integer;
         v_pulse       : out integer;
         v_bp          : out integer;
         v_fp          : out integer;
-        -- Polarity (0 for Negative, 1 for Positive)
+
         h_pol, v_pol  : out std_logic
     );
 end entity;
